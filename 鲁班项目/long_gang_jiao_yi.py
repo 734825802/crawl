@@ -59,6 +59,7 @@ def bid_bulletin(page):
                 flag = False
                 break
             else:
+                flag = True
                 href = tr.find_all('td')[1].find('a')['href']               # 公告详情链接
                 bid_project_num = tr.find_all('td')[0].text.strip()         # 招标项目编号
                 bulletin_name = tr.find_all('td')[1].text.strip()           # 公告名称

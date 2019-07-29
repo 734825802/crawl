@@ -88,6 +88,7 @@ def detail_data(trade_info, trade_type, url, page):
                 flag = False
                 break
             else:
+                flag = True
                 title = li_list[i].find('a', attrs={'title': True}).attrs['title']  # 标题
                 area = get_area(title)          # 清洗地区
                 href = li_list[i].find('a', attrs={'href': True}).attrs['href']  # 标签链接

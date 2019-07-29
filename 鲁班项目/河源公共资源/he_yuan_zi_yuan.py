@@ -86,6 +86,7 @@ def detail_data(trade_info, trade_type, url, page):
                 flag = False
                 break
             else:
+                flag = True
                 title = li_list[i].find('a', attrs={'title': True}).attrs['title']  # 标题
                 href = li_list[i].find('a', attrs={'href': True}).attrs['href']  # 标签链接
                 detail_url = 'http://61.143.150.176' + href  # 详情页面链接

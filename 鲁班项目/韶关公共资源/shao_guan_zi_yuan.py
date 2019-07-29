@@ -49,7 +49,6 @@ def get_area(title):
 # 翻页
 def page_down(page):
     page += 1
-
     # 表单参数
     formdata = {
         'searchvalue': '',
@@ -94,7 +93,7 @@ def page_down(page):
     # 对每个类型进行循环遍历
     for (trade_info, v) in type_dict.items():   # 对交易信息遍历
         for (trade_type, url) in v.items():     # 对交易类型遍历
-            detail_data(trade_info, trade_type, url, page,formdata)
+            detail_data(trade_info, trade_type, url, page, formdata)
 
 """
 trade_type：交易类型
@@ -111,8 +110,10 @@ def detail_data(trade_info, trade_type, url, page,formdata):
             # 发布时间
             pub_date = tr_list[i].find_all('td')[2].text.strip()
             if pub_date != day:
+                flag = False
                 break
             else:
+                flag = True
                 # 标题
                 title = tr_list[i].find('a').text.strip()
                 # 地区
@@ -146,7 +147,8 @@ def detail_data(trade_info, trade_type, url, page,formdata):
                         'crawl_time': time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
                     })
                     print(detail_url)
-        page_down(page)
+        if flag:
+            page_down(page)
     except Exception as e:
         print(e)
 
